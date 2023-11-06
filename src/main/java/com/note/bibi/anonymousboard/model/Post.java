@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Data
+//@Builder
 public class Post {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

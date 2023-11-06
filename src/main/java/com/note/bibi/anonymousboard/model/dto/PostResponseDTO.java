@@ -1,8 +1,7 @@
-package com.note.bibi.anonymousboard.controller.dto;
+package com.note.bibi.anonymousboard.model.dto;
 
 import com.note.bibi.anonymousboard.model.Post;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
 public class PostResponseDTO {
