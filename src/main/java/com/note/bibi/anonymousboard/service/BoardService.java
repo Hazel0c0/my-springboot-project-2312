@@ -4,8 +4,6 @@ import com.note.bibi.anonymousboard.model.dto.PostResponseDTO;
 import com.note.bibi.anonymousboard.model.Post;
 import com.note.bibi.anonymousboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import lombok.extern.slf4j.XSlf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +12,6 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class BoardService {
   private final BoardRepository boardRepository;
 
@@ -30,7 +27,6 @@ public class BoardService {
   }
 
   public PostResponseDTO findPostById(Long postId){
-    log.info("board find post by id - service : id = "+postId);
 
     return boardRepository.findById(postId)
         .map(PostResponseDTO::new)

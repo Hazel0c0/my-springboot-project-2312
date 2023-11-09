@@ -4,6 +4,7 @@ import com.note.bibi.anonymousboard.model.dto.PostResponseDTO;
 import com.note.bibi.anonymousboard.model.Post;
 import com.note.bibi.anonymousboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/anonymous")
+@Slf4j
 public class BoardController {
   private final BoardService boardService;
 
@@ -32,6 +34,8 @@ public class BoardController {
   // 게시글 조회 - id
   @GetMapping(params = "postId")
   public ResponseEntity<PostResponseDTO> getPostsById(@RequestParam final Long postId){
+    log.info("board find post by id - controller : id = "+postId);
+
     PostResponseDTO postDto = boardService.findPostById(postId);
     return ResponseEntity.ok(postDto);
   }
