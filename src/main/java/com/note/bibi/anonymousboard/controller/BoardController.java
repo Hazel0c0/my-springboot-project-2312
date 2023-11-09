@@ -29,10 +29,10 @@ public class BoardController {
     return ResponseEntity.ok(allPostDto);
   }
 
-  // 게시글 전체 조회
-  @GetMapping
-  public ResponseEntity<List<PostResponseDTO>> getPosts(){
-    List<PostResponseDTO> allPostDto = boardService.findAllPost();
-    return ResponseEntity.ok(allPostDto);
+  // 게시글 조회 - id
+  @GetMapping(params = "postId")
+  public ResponseEntity<PostResponseDTO> getPostsById(@RequestParam final Long postId){
+    PostResponseDTO postDto = boardService.findPostById(postId);
+    return ResponseEntity.ok(postDto);
   }
 }
