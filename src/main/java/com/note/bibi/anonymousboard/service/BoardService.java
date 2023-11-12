@@ -24,7 +24,7 @@ public class BoardService {
   }
 
   public List<PostResponseDTO> findAll(){
-    List<Post> posts = boardRepository.findAll();
+    List<Post> posts = boardRepository.findTop100ByOrderByCreatedAtDesc();
     return posts.stream()
             .map(PostResponseDTO::new)
             .collect(Collectors.toList());
