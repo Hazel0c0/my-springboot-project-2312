@@ -32,8 +32,8 @@ public class BoardController {
   }
 
   // 게시글 조회 - id
-  @GetMapping(params = "postId")
-  public ResponseEntity<PostResponseDTO> getPostsById(@RequestParam final Long postId){
+  @GetMapping(params = "id")
+  public ResponseEntity<PostResponseDTO> getPostsById(@RequestParam("id") final Long postId){
     log.info("find post by id - controller : id = "+postId);
 
     PostResponseDTO postDto = boardService.findById(postId);
