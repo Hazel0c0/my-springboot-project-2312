@@ -23,8 +23,8 @@ public class BoardService {
     return new PostResponseDTO(boardRepository.save(PostMapper.toEntity(requestPost)));
   }
 
-  public List<PostResponseDTO> findAll(){
-    List<Post> posts = boardRepository.findAll();
+  public List<PostResponseDTO> findAll(String keyword){
+    List<Post> posts = boardRepository.findTop100ByTitleContainingOrderByCreatedAtDesc(keyword);
     return posts.stream()
             .map(PostResponseDTO::new)
             .collect(Collectors.toList());
@@ -54,4 +54,6 @@ public class BoardService {
       return false;
     }
   }
+
+
 }

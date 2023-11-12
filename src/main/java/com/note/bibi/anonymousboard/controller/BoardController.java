@@ -26,14 +26,14 @@ public class BoardController {
 
   // 게시글 전체 조회
   @GetMapping
-  public ResponseEntity<List<PostResponseDTO>> getPostAll(){
-    List<PostResponseDTO> allPostDto = boardService.findAll();
+  public ResponseEntity<List<PostResponseDTO>> getPostAll(@RequestParam(required = false) String keyword){
+    List<PostResponseDTO> allPostDto = boardService.findAll(keyword);
     return ResponseEntity.ok(allPostDto);
   }
 
   // 게시글 조회 - id
-  @GetMapping(params = "postId")
-  public ResponseEntity<PostResponseDTO> getPostsById(@RequestParam final Long postId){
+  @GetMapping("/{postId}")
+  public ResponseEntity<PostResponseDTO> getPostsById(@PathVariable final Long postId){
     log.info("find post by id - controller : id = "+postId);
 
     PostResponseDTO postDto = boardService.findById(postId);

@@ -1,17 +1,14 @@
 package com.note.bibi.anonymousboard.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
-
-import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Data
-public class Post {
+@EntityListeners(AuditingEntityListener.class) // 부모 엔터티의 리스너를 지정
+@NoArgsConstructor
+public class Post extends DataTime {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
