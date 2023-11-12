@@ -1,8 +1,9 @@
 package com.note.bibi.anonymousboard.service;
 
 import com.note.bibi.anonymousboard.model.Post;
-import com.note.bibi.anonymousboard.model.dto.PostDTO;
-import com.note.bibi.anonymousboard.model.dto.PostUpdateDTO;
+import com.note.bibi.anonymousboard.model.PostMapper;
+import com.note.bibi.anonymousboard.model.dto.PostResponseDTO;
+import com.note.bibi.anonymousboard.model.dto.PostRequestDTO;
 import com.note.bibi.anonymousboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -17,19 +18,20 @@ import java.util.stream.Collectors;
 public class BoardService {
   private final BoardRepository boardRepository;
 
-  public PostDTO savePost(final Post post) {
-    return new PostDTO(boardRepository.save(post));
+  public PostResponseDTO savePost(final PostRequestDTO requestPost) {
+
+    return new PostResponseDTO(boardRepository.save(PostMapper.toEntity(requestPost)));
   }
 
-  public List<PostDTO> findAll(){
+  public List<PostResponseDTO> findAll(){
     List<Post> posts = boardRepository.findAll();
     return posts.stream()
-            .map(PostDTO::new)
+            .map(PostResponseDTO::new)
             .collect(Collectors.toList());
   }
 
-  public PostDTO findById(Long postId){
-    return new PostDTO(returnPost(postId));
+  public PostResponseDTO findById(Long postId){
+    return new PostResponseDTO(returnPost(postId));
   }
 
   private Post returnPost(Long postId) {
@@ -37,11 +39,11 @@ public class BoardService {
        .orElseThrow(() -> new NoSuchElementException("Post not found"));
   }
 
-  public PostDTO updatePost(Long postId, PostUpdateDTO updatedPost) {
+  public PostResponseDTO updatePost(Long postId, PostRequestDTO updatedPost) {
     Post post = returnPost(postId);
     post.setTitle(updatedPost.getTitle());
     post.setContent(updatedPost.getContent());
-    return new PostDTO(post);
+    return new PostResponseDTO(post);
   }
 
   public boolean deletePost(Long postId) {
