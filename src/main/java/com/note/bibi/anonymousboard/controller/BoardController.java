@@ -26,8 +26,8 @@ public class BoardController {
 
   // 게시글 전체 조회
   @GetMapping
-  public ResponseEntity<List<PostResponseDTO>> getPostAll(){
-    List<PostResponseDTO> allPostDto = boardService.findAll();
+  public ResponseEntity<List<PostResponseDTO>> getPostAll(@RequestParam(required = false) String keyword){
+    List<PostResponseDTO> allPostDto = boardService.findAll(keyword);
     return ResponseEntity.ok(allPostDto);
   }
 
