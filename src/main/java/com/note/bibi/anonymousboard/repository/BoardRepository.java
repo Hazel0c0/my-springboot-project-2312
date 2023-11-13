@@ -12,5 +12,5 @@ public interface BoardRepository extends JpaRepository<Post, Long> {
   @Query("SELECT p FROM Post p " +
       "WHERE :keyword IS NULL OR :keyword = '' OR LOWER(p.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
       "ORDER BY p.createdAt DESC")
-  List<Post> findTop100ByTitleContainingOrderByCreatedAtDesc(@Param("keyword") String keyword);
+  List<Post> findRecentPosts(@Param("keyword") String keyword);
 }

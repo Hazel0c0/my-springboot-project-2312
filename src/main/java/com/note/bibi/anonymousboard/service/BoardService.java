@@ -26,7 +26,7 @@ public class BoardService {
   }
 
   public List<PostResponseDTO> findAll(String keyword){
-    List<Post> posts = boardRepository.findTop100ByTitleContainingOrderByCreatedAtDesc(keyword);
+    List<Post> posts = boardRepository.findRecentPosts(keyword);
     return posts.stream()
             .map(PostResponseDTO::new)
             .collect(Collectors.toList());
