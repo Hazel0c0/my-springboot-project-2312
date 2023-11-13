@@ -6,6 +6,7 @@ import com.note.bibi.anonymousboard.model.dto.PostResponseDTO;
 import com.note.bibi.anonymousboard.model.dto.PostRequestDTO;
 import com.note.bibi.anonymousboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BoardService {
   private final BoardRepository boardRepository;
 
@@ -43,6 +45,8 @@ public class BoardService {
     Post post = returnPost(postId);
     post.setTitle(updatedPost.getTitle());
     post.setContent(updatedPost.getContent());
+    boardRepository.flush();
+    log.info(post.getUpdatedAt()+"-- 수정된 시간");
     return new PostResponseDTO(post);
   }
 

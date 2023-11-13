@@ -3,6 +3,7 @@ package com.note.bibi.anonymousboard.model.dto;
 import com.note.bibi.anonymousboard.model.Post;
 import jakarta.persistence.PrePersist;
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -12,13 +13,13 @@ public class PostResponseDTO {
   private String title;
   private String content;
   private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
   public PostResponseDTO(Post post) {
     this.id = post.getId();
     this.title = post.getTitle();
     this.content = post.getContent();
     this.createdAt=post.getCreatedAt();
+    this.updatedAt = post.getUpdatedAt();
   }
-
-
 }

@@ -6,6 +6,7 @@ import com.note.bibi.anonymousboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,10 +46,12 @@ public class BoardController {
   public ResponseEntity<PostResponseDTO> updatePost(
       @PathVariable final Long postId,
       @RequestBody final PostRequestDTO updatedPost) {
-    log.info("update post by id - controller : id = "+postId);
-    log.info("update post content - controller : content = "+updatedPost.toString());
+    log.info("update post by id - controller : "+postId);
+    log.info("update post content  :  "+updatedPost.toString());
 
     PostResponseDTO postDto = boardService.updatePost(postId,updatedPost);
+    log.info("update post updated at :  "+postDto.getUpdatedAt());
+
     return ResponseEntity.ok(postDto);
   }
 
