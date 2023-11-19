@@ -1,8 +1,8 @@
-package com.note.bibi.board.controller;
+package com.note.bibi.domain.board.controller;
 
-import com.note.bibi.board.controller.dto.PostResponseDTO;
-import com.note.bibi.board.controller.dto.PostRequestDTO;
-import com.note.bibi.board.service.BoardService;
+import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
+import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
+import com.note.bibi.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -26,18 +26,22 @@ public class BoardController {
 
   // 게시글 전체 조회
   @GetMapping
-  public ResponseEntity<List<PostResponseDTO>> getPostAll(@RequestParam(required = false) String keyword){
+  public ResponseEntity<List<PostResponseDTO>> getPostAll(@RequestParam(required = false) String keyword) {
     List<PostResponseDTO> allPostDto = boardService.findAll(keyword);
     return ResponseEntity.ok(allPostDto);
   }
 
   // 게시글 조회 - id
   @GetMapping("/{postId}")
-  public ResponseEntity<PostResponseDTO> getPostsById(@PathVariable final Long postId){
-    log.info("find post by id - controller : id = "+postId);
+  public ResponseEntity<PostResponseDTO> getPostsById(@PathVariable final Long postId) {
+    log.info("find post by id - controller : id = " + postId);
 
-    PostResponseDTO postDto = boardService.findById(postId);
-    return ResponseEntity.ok(postDto);
+    try {
+      PostResponseDTO postDto = boardService.findById(postId);
+      return ResponseEntity.ok(postDto);
+    } catch (PostNotFoundException e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("게시글을 찾을 수 없습니다");
+    }
   }
 
   // 게시글 수정
@@ -45,11 +49,11 @@ public class BoardController {
   public ResponseEntity<PostResponseDTO> updatePost(
       @PathVariable final Long postId,
       @RequestBody final PostRequestDTO updatedPost) {
-    log.info("update post by id - controller : "+postId);
-    log.info("update post content  :  "+updatedPost.toString());
+    log.info("update post by id - controller : " + postId);
+    log.info("update post content  :  " + updatedPost.toString());
 
-    PostResponseDTO postDto = boardService.updatePost(postId,updatedPost);
-    log.info("update post updated at :  "+postDto.getUpdatedAt());
+    PostResponseDTO postDto = boardService.updatePost(postId, updatedPost);
+    log.info("update post updated at :  " + postDto.getUpdatedAt());
 
     return ResponseEntity.ok(postDto);
   }

@@ -1,6 +1,6 @@
-package com.note.bibi.board.controller.dto;
+package com.note.bibi.domain.board.controller.dto;
 
-import com.note.bibi.board.model.Post;
+import com.note.bibi.domain.board.model.Post;
 import lombok.Data;
 
 import java.time.LocalDateTime;

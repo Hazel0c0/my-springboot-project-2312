@@ -1,6 +1,6 @@
-package com.note.bibi.board.model;
+package com.note.bibi.domain.board.model;
 
-import com.note.bibi.common.BaseEntity;
+import com.note.bibi.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

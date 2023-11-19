@@ -1,4 +1,4 @@
-package com.note.bibi.common;
+package com.note.bibi.global.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

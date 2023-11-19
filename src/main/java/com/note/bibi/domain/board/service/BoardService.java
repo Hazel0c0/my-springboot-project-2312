@@ -1,10 +1,10 @@
-package com.note.bibi.board.service;
+package com.note.bibi.domain.board.service;
 
-import com.note.bibi.board.model.Post;
-import com.note.bibi.board.model.PostMapper;
-import com.note.bibi.board.controller.dto.PostResponseDTO;
-import com.note.bibi.board.controller.dto.PostRequestDTO;
-import com.note.bibi.board.repository.BoardRepository;
+import com.note.bibi.domain.board.model.Post;
+import com.note.bibi.domain.board.model.PostMapper;
+import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
+import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
+import com.note.bibi.domain.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -33,6 +33,9 @@ public class BoardService {
   }
 
   public PostResponseDTO findById(Long postId){
+    if(returnPost(postId) == null) {
+      throw new PostNotFoundException("게시글을 찾을 수 없습니다");
+    }
     return new PostResponseDTO(returnPost(postId));
   }
 
