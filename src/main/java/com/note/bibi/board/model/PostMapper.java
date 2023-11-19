@@ -1,8 +1,6 @@
-package com.note.bibi.anonymousboard.model;
+package com.note.bibi.board.model;
 
-import com.note.bibi.anonymousboard.model.Post;
-import com.note.bibi.anonymousboard.model.dto.PostRequestDTO;
-import org.springframework.stereotype.Component;
+import com.note.bibi.board.controller.dto.PostRequestDTO;
 
 public class PostMapper {
 

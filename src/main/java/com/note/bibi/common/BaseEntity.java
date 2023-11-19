@@ -1,4 +1,4 @@
-package com.note.bibi.anonymousboard.model;
+package com.note.bibi.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

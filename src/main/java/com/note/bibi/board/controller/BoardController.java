@@ -1,12 +1,11 @@
-package com.note.bibi.anonymousboard.controller;
+package com.note.bibi.board.controller;
 
-import com.note.bibi.anonymousboard.model.dto.PostResponseDTO;
-import com.note.bibi.anonymousboard.model.dto.PostRequestDTO;
-import com.note.bibi.anonymousboard.service.BoardService;
+import com.note.bibi.board.controller.dto.PostResponseDTO;
+import com.note.bibi.board.controller.dto.PostRequestDTO;
+import com.note.bibi.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

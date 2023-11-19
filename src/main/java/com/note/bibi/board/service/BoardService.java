@@ -1,10 +1,10 @@
-package com.note.bibi.anonymousboard.service;
+package com.note.bibi.board.service;
 
-import com.note.bibi.anonymousboard.model.Post;
-import com.note.bibi.anonymousboard.model.PostMapper;
-import com.note.bibi.anonymousboard.model.dto.PostResponseDTO;
-import com.note.bibi.anonymousboard.model.dto.PostRequestDTO;
-import com.note.bibi.anonymousboard.repository.BoardRepository;
+import com.note.bibi.board.model.Post;
+import com.note.bibi.board.model.PostMapper;
+import com.note.bibi.board.controller.dto.PostResponseDTO;
+import com.note.bibi.board.controller.dto.PostRequestDTO;
+import com.note.bibi.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;

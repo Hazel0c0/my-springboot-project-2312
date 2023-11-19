@@ -1,5 +1,6 @@
-package com.note.bibi.anonymousboard.model;
+package com.note.bibi.board.model;
 
+import com.note.bibi.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

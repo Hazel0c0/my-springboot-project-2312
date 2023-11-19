@@ -1,9 +1,7 @@
-package com.note.bibi.anonymousboard.model.dto;
+package com.note.bibi.board.controller.dto;
 
-import com.note.bibi.anonymousboard.model.Post;
-import jakarta.persistence.PrePersist;
+import com.note.bibi.board.model.Post;
 import lombok.Data;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
