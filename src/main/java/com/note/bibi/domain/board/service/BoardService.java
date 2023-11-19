@@ -33,9 +33,6 @@ public class BoardService {
   }
 
   public PostResponseDTO findById(Long postId){
-    if(returnPost(postId) == null) {
-      throw new PostNotFoundException("게시글을 찾을 수 없습니다");
-    }
     return new PostResponseDTO(returnPost(postId));
   }
 

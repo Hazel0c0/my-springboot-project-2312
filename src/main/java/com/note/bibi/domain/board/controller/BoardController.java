@@ -39,8 +39,8 @@ public class BoardController {
     try {
       PostResponseDTO postDto = boardService.findById(postId);
       return ResponseEntity.ok(postDto);
-    } catch (PostNotFoundException e) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("게시글을 찾을 수 없습니다");
+    } catch (NoSuchElementException e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("게시글을 찾을 수 없습니다.");
     }
   }
 
