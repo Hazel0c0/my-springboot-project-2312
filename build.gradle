@@ -29,8 +29,13 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	// Hibernate Validator
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 	// slf4j
 	implementation 'org.slf4j:slf4j-api'
+
+
 }
 
 tasks.named('test') {
