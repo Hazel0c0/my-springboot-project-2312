@@ -25,8 +25,8 @@ public class BoardService {
     return new PostResponseDTO(boardRepository.save(PostMapper.toEntity(requestPost)));
   }
 
-  public List<PostResponseDTO> findAll(String keyword){
-    List<Post> posts = boardRepository.findRecentPosts(keyword);
+  public List<PostResponseDTO> findAll(SearchDTO searchDTO){
+    List<Post> posts = boardRepository.findRecentPosts(searchDTO.getKeyword);
     return posts.stream()
             .map(PostResponseDTO::new)
             .collect(Collectors.toList());
