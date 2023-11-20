@@ -1,9 +1,10 @@
 package com.note.bibi.domain.board.service;
 
+import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
+import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
+import com.note.bibi.domain.board.controller.dto.SearchDTO;
 import com.note.bibi.domain.board.model.Post;
 import com.note.bibi.domain.board.model.PostMapper;
-import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
-import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
 import com.note.bibi.domain.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class BoardService {
   }
 
   public List<PostResponseDTO> findAll(SearchDTO searchDTO){
-    List<Post> posts = boardRepository.findRecentPosts(searchDTO.getKeyword);
+    List<Post> posts = boardRepository.findRecentPosts(searchDTO.getKeyword());
     return posts.stream()
             .map(PostResponseDTO::new)
             .collect(Collectors.toList());
@@ -38,7 +39,7 @@ public class BoardService {
 
   private Post returnPost(Long postId) {
     return boardRepository.findById(postId)
-       .orElseThrow(() -> new NoSuchElementException("Post not found"));
+       .orElseThrow(NoSuchElementException::new);
   }
 
   public PostResponseDTO updatePost(Long postId, PostRequestDTO updatedPost) {

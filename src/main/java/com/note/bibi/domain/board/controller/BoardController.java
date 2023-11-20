@@ -1,7 +1,8 @@
 package com.note.bibi.domain.board.controller;
 
-import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
 import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
+import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
+import com.note.bibi.domain.board.controller.dto.SearchDTO;
 import com.note.bibi.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,12 +37,8 @@ public class BoardController {
   public ResponseEntity<PostResponseDTO> getPostsById(@PathVariable final Long postId) {
     log.info("find post by id - controller : id = " + postId);
 
-    try {
       PostResponseDTO postDto = boardService.findById(postId);
       return ResponseEntity.ok(postDto);
-    } catch (NoSuchElementException e) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("게시글을 찾을 수 없습니다.");
-    }
   }
 
   // 게시글 수정
