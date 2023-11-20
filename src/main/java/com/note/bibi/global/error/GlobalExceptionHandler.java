@@ -17,6 +17,9 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-    return ResponseEntity.badRequest().body("유효성 검사 실패: " + ex.getBindingResult().getFieldError().getDefaultMessage());
+    return ResponseEntity.badRequest().body("유효성 검사 실패: "
+            + ex.getBindingResult()
+            .getFieldError()
+            .getDefaultMessage());
   }
 }
