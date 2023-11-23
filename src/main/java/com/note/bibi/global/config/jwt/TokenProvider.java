@@ -1,23 +1,18 @@
 package com.note.bibi.global.config.jwt;
 
 import com.note.bibi.domain.user.model.User;
-import com.note.bibi.global.config.security.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.lang.Assert;
+import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Collections;
 import java.util.Date;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -52,7 +47,31 @@ public class TokenProvider {
         .signWith(tokenInfo.getSecretKey(), SignatureAlgorithm.HS256)
         .compact();
   }
+  /**
+   * 클라이언트가 전송한 토큰을 디코딩하여 토큰의 위조여부를 확인
+   * 토큰을 json으로 파싱해서 클레임(토큰정보)를 리턴
+   * @param token
+   * @return - 토큰 안에있는 인증된 유저정보를 반환
+   */
+  public TokenUserInfo validateAndGetTokenUserInfo(String token) {
 
+    Claims claims = Jwts.parserBuilder()
+        // 토큰 발급자의 발급 당시의 서명을 넣어줌
+        .setSigningKey(tokenInfo.getSecretKey())
+        // 서명 위조 검사: 위조된경우 예외가 발생합니다.
+        // 위조가 되지 않은 경우 페이로드를 리턴
+        .build()
+        .parseClaimsJws(token)
+        .getBody();
+
+    log.info("claims: {}", claims);
+
+    return TokenUserInfo.builder()
+        .userId(claims.getSubject())
+        .email(claims.get("email", String.class))
+        .build();
+  }
+/*
   // 토큰 유효성 검사
   public boolean validateToken(String token) {
     try {
@@ -65,6 +84,8 @@ public class TokenProvider {
     }
   }
 
+ */
+/*
   // CustomUserDetails 취득
   public CustomUserDetails getCustomUserDetails(final String token) {
     Assert.hasText(token, "token parameter must not be empty or null");
@@ -94,4 +115,6 @@ public class TokenProvider {
         .parseClaimsJws(token)
         .getBody();
   }
+
+ */
 }

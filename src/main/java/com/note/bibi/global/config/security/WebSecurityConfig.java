@@ -1,0 +1,63 @@
+//package com.note.bibi.global.config.security;
+//
+//import com.note.bibi.global.config.filter.JwtAuthFilter;
+//import lombok.RequiredArgsConstructor;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.http.HttpMethod;
+//import org.springframework.security.config.Customizer;
+//import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.http.SessionCreationPolicy;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.web.SecurityFilterChain;
+//import org.springframework.web.filter.CorsFilter;
+//
+////@Configuration
+//@EnableWebSecurity
+//@RequiredArgsConstructor
+//// 자동 권한검사를 수행하기 위한 설정
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
+//public class WebSecurityConfig {
+//
+//    private final JwtAuthFilter jwtAuthFilter;
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//
+//
+//    // 시큐리티 설정
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//
+//        http
+//                .cors()
+//                .and()
+//                .csrf().disable()
+//                .httpBasic().disable()
+//                // 세션인증을 사용하지 않겠다
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                // 어떤 요청에서 인증을 안할 것인지 설정, 언제 할 것인지 설정
+//                .authorizeRequests()
+//                    .antMatchers(HttpMethod.PUT, "/api/user/promote").authenticated()
+//                    .antMatchers("/api/user/load-profile").authenticated()
+//                    .antMatchers("/", "/api/auth/**").permitAll()
+////                    .antMatchers(HttpMethod.POST, "/api/todos").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+//                ;
+//
+//        // 토큰인증 필터 연결
+//        http.addFilterAfter(
+//                jwtAuthFilter
+//                , CorsFilter.class // import주의: 스프링꺼
+//        );
+//
+//        return http.build();
+//    }
+//
+//}
