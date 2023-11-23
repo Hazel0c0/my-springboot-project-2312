@@ -1,4 +1,4 @@
-package com.note.bibi.domain.board.controller.dto;
+package com.note.bibi.domain.board.controller.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,6 +1,6 @@
 package com.note.bibi.domain.user.model;
 
-import com.note.bibi.domain.user.controller.dto.SignUpRequestDTO;
+import com.note.bibi.domain.user.controller.dto.request.SignUpRequestDTO;
 
 public class UserMapper {
 

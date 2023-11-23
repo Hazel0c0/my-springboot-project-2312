@@ -1,6 +1,6 @@
 package com.note.bibi.domain.board.model;
 
-import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
+import com.note.bibi.domain.board.controller.dto.request.PostRequestDTO;
 
 public class PostMapper {
 

@@ -1,4 +1,4 @@
-package com.note.bibi.domain.board.controller.dto;
+package com.note.bibi.domain.board.controller.dto.response;
 
 import com.note.bibi.domain.board.model.Post;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class PostResponseDTO {
   private LocalDateTime updatedAt;
 
   public PostResponseDTO(Post post) {
-    this.id = post.getId();
+    this.id = post.getPostId();
     this.title = post.getTitle();
     this.content = post.getContent();
     this.createdAt=post.getCreatedAt();
