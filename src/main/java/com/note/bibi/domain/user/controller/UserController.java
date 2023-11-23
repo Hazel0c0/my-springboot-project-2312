@@ -28,6 +28,13 @@ public class UserController {
     return ResponseEntity.ok().body(signUpResponseDTO);
   }
 
+  @PostMapping("/sign-in")
+  public ResponseEntity<LoginResponseDTO> signIn(@Validated @RequestBody LoginRequestDTO dto) {
+    LoginResponseDTO responseDTO = userService.authenticate(dto);
+
+    return ResponseEntity.ok().body(responseDTO);
+  }
+
   // 이메일 중복확인 요청 처리
   // GET: /api/user/check?email=zzzz@xxx.com
   @GetMapping("/check")
@@ -40,12 +47,5 @@ public class UserController {
     log.info("{} 중복?? - {}", email, resultFlag);
 
     return ResponseEntity.ok().body(resultFlag);
-  }
-
-  @PostMapping("/sign-in")
-  public ResponseEntity<LoginResponseDTO> signIn(@Validated @RequestBody LoginRequestDTO dto) {
-    LoginResponseDTO responseDTO = userService.authenticate(dto);
-
-    return ResponseEntity.ok().body(responseDTO);
   }
 }
