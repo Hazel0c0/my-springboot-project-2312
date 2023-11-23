@@ -26,9 +26,10 @@ public class UserExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<?> handleOtherExceptions(Exception e) {
-    log.warn("기타 예외가 발생했습니다.");
-    e.printStackTrace();
-    return ResponseEntity.internalServerError().build();
+    log.warn("기타 예외가 발생했습니다. - {}", e.getMessage());
+//    e.printStackTrace();
+//    return ResponseEntity.internalServerError().build();
+    return ResponseEntity.badRequest().body(e.getMessage());
   }
 }
 

@@ -1,6 +1,8 @@
 package com.note.bibi.domain.user.controller;
 
+import com.note.bibi.domain.user.controller.dto.request.LoginRequestDTO;
 import com.note.bibi.domain.user.controller.dto.request.SignUpRequestDTO;
+import com.note.bibi.domain.user.controller.dto.response.LoginResponseDTO;
 import com.note.bibi.domain.user.controller.dto.response.SignUpResponseDTO;
 import com.note.bibi.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +42,10 @@ public class UserController {
     return ResponseEntity.ok().body(resultFlag);
   }
 
-//  @PostMapping("/sign-in")
-//  public ResponseEntity<String> signIn(@Validated @RequestBody LoginRequestDTO request) {
-//    userService.loginUser(request);
-//    return ResponseEntity.ok("로그인 성공");
-//  }
+  @PostMapping("/sign-in")
+  public ResponseEntity<LoginResponseDTO> signIn(@Validated @RequestBody LoginRequestDTO dto) {
+    LoginResponseDTO responseDTO = userService.authenticate(dto);
+
+    return ResponseEntity.ok().body(responseDTO);
+  }
 }
