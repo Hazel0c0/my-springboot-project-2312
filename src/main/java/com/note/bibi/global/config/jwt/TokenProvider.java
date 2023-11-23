@@ -83,20 +83,6 @@ public class TokenProvider {
         .build();
   }
 /*
-  // 토큰 유효성 검사
-  public boolean validateToken(String token) {
-    try {
-      Jwts.parser()
-          .setSigningKey(tokenInfo.getSecretKey())
-          .parseClaimsJws(token);
-      return true;
-    } catch (Exception e) {
-      return false;
-    }
-  }
-
- */
-/*
   // CustomUserDetails 취득
   public CustomUserDetails getCustomUserDetails(final String token) {
     Assert.hasText(token, "token parameter must not be empty or null");
