@@ -2,9 +2,14 @@ package com.note.bibi.domain.user.controller.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class LoginRequestDTO {
   @NotBlank(message = "이메일을 입력해주세요")
   @Email(message = "올바른 이메일 형식이어야 합니다")

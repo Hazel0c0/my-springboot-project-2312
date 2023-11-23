@@ -1,11 +1,16 @@
 package com.note.bibi.domain.board.controller.dto.response;
 
 import com.note.bibi.domain.board.model.Post;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PostResponseDTO {
   private Long id;
   private String title;

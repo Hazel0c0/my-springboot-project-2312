@@ -2,9 +2,14 @@ package com.note.bibi.domain.board.controller.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PostRequestDTO {
   @NotBlank(message = "제목을 입력해주세요")
   @Size(min = 1, max = 30, message = "제목은 1글자 이상 30글자 이하여야 합니다")
