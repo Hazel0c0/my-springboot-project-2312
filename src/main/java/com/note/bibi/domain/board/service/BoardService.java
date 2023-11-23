@@ -1,8 +1,8 @@
 package com.note.bibi.domain.board.service;
 
-import com.note.bibi.domain.board.controller.dto.PostRequestDTO;
-import com.note.bibi.domain.board.controller.dto.PostResponseDTO;
-import com.note.bibi.domain.board.controller.dto.SearchDTO;
+import com.note.bibi.domain.board.controller.dto.request.PostRequestDTO;
+import com.note.bibi.domain.board.controller.dto.response.PostResponseDTO;
+import com.note.bibi.domain.board.controller.dto.request.SearchDTO;
 import com.note.bibi.domain.board.model.Post;
 import com.note.bibi.domain.board.model.PostMapper;
 import com.note.bibi.domain.board.repository.BoardRepository;
@@ -21,19 +21,19 @@ import java.util.stream.Collectors;
 public class BoardService {
   private final BoardRepository boardRepository;
 
-  public PostResponseDTO savePost(final PostRequestDTO requestPost) {
+  public PostResponseDTO create(final PostRequestDTO requestPost) {
 
     return new PostResponseDTO(boardRepository.save(PostMapper.toEntity(requestPost)));
   }
 
-  public List<PostResponseDTO> findAll(SearchDTO searchDTO){
+  public List<PostResponseDTO> retrieve(SearchDTO searchDTO){
     List<Post> posts = boardRepository.findRecentPosts(searchDTO.getKeyword());
     return posts.stream()
             .map(PostResponseDTO::new)
             .collect(Collectors.toList());
   }
 
-  public PostResponseDTO findById(Long postId){
+  public PostResponseDTO retrieveById(Long postId){
     return new PostResponseDTO(returnPost(postId));
   }
 
@@ -42,7 +42,7 @@ public class BoardService {
        .orElseThrow(NoSuchElementException::new);
   }
 
-  public PostResponseDTO updatePost(Long postId, PostRequestDTO updatedPost) {
+  public PostResponseDTO update(Long postId, PostRequestDTO updatedPost) {
     Post post = returnPost(postId);
     post.setTitle(updatedPost.getTitle());
     post.setContent(updatedPost.getContent());
@@ -51,7 +51,7 @@ public class BoardService {
     return new PostResponseDTO(post);
   }
 
-  public boolean deletePost(Long postId) {
+  public boolean delete(Long postId) {
     try {
       boardRepository.deleteById(postId);
       return true;
