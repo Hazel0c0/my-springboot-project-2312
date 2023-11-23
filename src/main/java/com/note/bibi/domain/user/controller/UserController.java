@@ -1,13 +1,13 @@
 package com.note.bibi.domain.user.controller;
 
 import com.note.bibi.domain.user.controller.dto.request.SignUpRequestDTO;
+import com.note.bibi.domain.user.controller.dto.response.SignUpResponseDTO;
 import com.note.bibi.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,14 +17,13 @@ public class UserController {
   private final UserService userService;
 
   @PostMapping("/sign-up")
-  public ResponseEntity<String> signUp(
-      @Validated @RequestPart("user") SignUpRequestDTO request
-      , @RequestPart(value = "profileImage", required = false /* 필수 X */) MultipartFile profileImg
+  public ResponseEntity<SignUpResponseDTO> signUp(
+      @Validated @RequestBody SignUpRequestDTO dto
   ) {
-    log.info("/api/user/sign-up POST! - {}", request);
+    log.info("/api/user/sign-up POST! - {}", dto);
 
-    userService.create(request);
-    return ResponseEntity.ok("회원가입 성공");
+    SignUpResponseDTO signUpResponseDTO = userService.create(dto);
+    return ResponseEntity.ok().body(signUpResponseDTO);
   }
 
   // 이메일 중복확인 요청 처리

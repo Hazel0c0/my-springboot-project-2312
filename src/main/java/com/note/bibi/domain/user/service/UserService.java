@@ -17,17 +17,17 @@ import org.springframework.stereotype.Service;
 public class UserService {
   private final UserRepository userRepository;
 
-  public SignUpResponseDTO create(SignUpRequestDTO request) {
-    if (request == null) {
+  public SignUpResponseDTO create(SignUpRequestDTO dto) {
+    if (dto == null) {
       throw new NoRegisteredArgumentsException("가입 정보가 없습니다.");
     }
-    String email = request.getEmail();
+    String email = dto.getEmail();
 
     if (isDuplicate(email)) {
       throw new DuplicatedEmailException("중복된 이메일입니다 : [ "+email+" ]");
     }
 
-    User saved = UserMapper.toEntity(request);
+    User saved = UserMapper.toEntity(dto);
     userRepository.save(saved);
 
     log.info(String.valueOf(saved));
