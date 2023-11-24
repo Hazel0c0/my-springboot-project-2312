@@ -1,8 +1,9 @@
 package com.note.bibi.domain.board.model;
 
 import com.note.bibi.global.common.BaseEntity;
-import jakarta.persistence.*;
 import lombok.*;
+
+import javax.persistence.*;
 
 @Setter
 @Getter

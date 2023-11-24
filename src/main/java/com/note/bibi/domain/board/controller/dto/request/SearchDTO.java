@@ -1,7 +1,8 @@
 package com.note.bibi.domain.board.controller.dto.request;
 
-import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import javax.validation.constraints.Size;
 
 @Getter
 @ToString

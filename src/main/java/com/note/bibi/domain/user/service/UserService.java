@@ -7,7 +7,7 @@ import com.note.bibi.domain.user.controller.dto.response.SignUpResponseDTO;
 import com.note.bibi.domain.user.model.User;
 import com.note.bibi.domain.user.model.UserMapper;
 import com.note.bibi.domain.user.repository.UserRepository;
-import com.note.bibi.global.config.jwt.TokenProvider;
+import com.note.bibi.global.jwt.TokenProvider;
 import com.note.bibi.global.error.exception.DuplicatedEmailException;
 import com.note.bibi.global.error.exception.NoRegisteredArgumentsException;
 import lombok.RequiredArgsConstructor;

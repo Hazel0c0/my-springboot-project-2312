@@ -1,9 +1,10 @@
 package com.note.bibi.domain.user.model;
 
 import com.note.bibi.global.common.BaseEntity;
-import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Getter
 @ToString
