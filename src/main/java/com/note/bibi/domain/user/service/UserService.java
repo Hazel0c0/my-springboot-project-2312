@@ -21,6 +21,7 @@ public class UserService {
   private final UserRepository userRepository;
   private final TokenProvider tokenProvider;
 
+  // 회원가입
   public SignUpResponseDTO create(SignUpRequestDTO dto) {
     if (dto == null) {
       throw new NoRegisteredArgumentsException("가입 정보가 없습니다.");
@@ -40,16 +41,19 @@ public class UserService {
 
   }
 
+  // 이메일 중복 검사
   public boolean isDuplicate(String email) {
     return userRepository.existsByEmail(email);
   }
 
+  // 로그인 - 회원 인증
   public LoginResponseDTO authenticate(LoginRequestDTO dto) {
+
     // 이메일을 통해 회원 정보 조회
     User user = userRepository.findByEmail(dto.getEmail())
         .orElseThrow(() -> new RuntimeException("가입된 회원이 아닙니다!"));
 
-    //패스워드 검증
+    // 패스워드 검증
     String rawPassword = dto.getPassword(); // 입력 비번
     String savedPassword = user.getPassword(); // DB에 저장된 비번
 
