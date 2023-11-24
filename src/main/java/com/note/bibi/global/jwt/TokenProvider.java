@@ -1,11 +1,10 @@
-package com.note.bibi.global.config.jwt;
+package com.note.bibi.global.jwt;
 
 import com.note.bibi.domain.user.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
