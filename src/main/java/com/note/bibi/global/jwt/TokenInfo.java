@@ -1,4 +1,4 @@
-package com.note.bibi.global.config.jwt;
+package com.note.bibi.global.jwt;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Getter;

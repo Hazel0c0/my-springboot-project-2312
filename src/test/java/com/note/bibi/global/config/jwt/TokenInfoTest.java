@@ -1,5 +1,7 @@
 package com.note.bibi.global.config.jwt;
 
+import com.note.bibi.global.jwt.TokenInfo;
+import com.note.bibi.global.jwt.TokenProvider;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

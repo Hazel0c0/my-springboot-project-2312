@@ -1,11 +1,10 @@
-package com.note.bibi.global.config.jwt;
+package com.note.bibi.global.jwt;
 
 import com.note.bibi.domain.user.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -47,6 +46,7 @@ public class TokenProvider {
         .signWith(tokenInfo.getSecretKey(), SignatureAlgorithm.HS256)
         .compact();
   }
+
   /**
    * 클라이언트가 전송한 토큰을 디코딩하여 토큰의 위조여부를 확인
    * 토큰을 json으로 파싱해서 클레임(토큰정보)를 리턴
@@ -71,50 +71,5 @@ public class TokenProvider {
         .email(claims.get("email", String.class))
         .build();
   }
-/*
-  // 토큰 유효성 검사
-  public boolean validateToken(String token) {
-    try {
-      Jwts.parser()
-          .setSigningKey(tokenInfo.getSecretKey())
-          .parseClaimsJws(token);
-      return true;
-    } catch (Exception e) {
-      return false;
-    }
-  }
 
- */
-/*
-  // CustomUserDetails 취득
-  public CustomUserDetails getCustomUserDetails(final String token) {
-    Assert.hasText(token, "token parameter must not be empty or null");
-
-    return new CustomUserDetails(getUserId(token));
-  }
-
-  // 토큰 기반으로 유저 인증 정보 취득
-  public UsernamePasswordAuthenticationToken getAuthentication(String token) {
-    Claims claims = getClaims(token);
-    Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
-
-    return new UsernamePasswordAuthenticationToken(
-        new org.springframework.security.core.userdetails.User
-            (claims.getSubject(), "", authorities), token, authorities);
-  }
-
-  // 토큰 기반으로 유저 아이디 취득
-  public Long getUserId(String token) {
-    Claims claims = getClaims(token);
-    return claims.get("ID", Long.class);
-  }
-
-  private Claims getClaims(String token) {
-    return Jwts.parser()
-        .setSigningKey(tokenInfo.getSecretKey())
-        .parseClaimsJws(token)
-        .getBody();
-  }
-
- */
 }

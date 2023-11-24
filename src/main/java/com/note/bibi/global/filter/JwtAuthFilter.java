@@ -1,7 +1,7 @@
-package com.note.bibi.global.config.filter;
+package com.note.bibi.global.filter;
 
-import com.note.bibi.global.config.jwt.TokenProvider;
-import com.note.bibi.global.config.jwt.TokenUserInfo;
+import com.note.bibi.global.jwt.TokenProvider;
+import com.note.bibi.global.jwt.TokenUserInfo;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
