@@ -63,7 +63,7 @@ public class UserService {
     log.info("{}님 로그인 성공!!", user.getEmail());
 
     // 로그인 성공 후에 클라이언트에 뭘 리턴할 것인가??
-    // -> JWT를 클라이언트에게 발급해줘야 함.
+    // -> JWT(Access Token)를 클라이언트에게 발급해줘야 함.
     String token = tokenProvider.createToken(user);
 
     return new LoginResponseDTO(user, token);
