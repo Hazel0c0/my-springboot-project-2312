@@ -43,6 +43,8 @@ public class WebSecurityConfig {
     http.addFilterAfter(
         jwtAuthFilter
         , CorsFilter.class // import주의: 스프링꺼
+            // CorsFilter : cross origin 정책을 처리하는 필터
+            // cross origin : 인증되지 않은(IP) 요청을 사전에 차단
     );
 
     return http.build();

@@ -26,6 +26,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
+  // OncePerRequestFilter - 필터가 아니라 필터 종류임 : 한번 요청할 때마다 작동 되는 필터
   private final TokenProvider tokenProvider;
 
   // 필터가 해야할 작업을 기술
