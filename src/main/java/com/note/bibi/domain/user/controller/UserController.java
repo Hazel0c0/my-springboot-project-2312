@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
   private final UserService userService;
 
+  /**
+   * 회원가입
+   * @param dto : 이메일, 패스워드
+   * @return : 이메일, 가입시간
+   */
   @PostMapping("/sign-up")
   public ResponseEntity<SignUpResponseDTO> signUp(
       @Validated @RequestBody SignUpRequestDTO dto
@@ -28,6 +33,11 @@ public class UserController {
     return ResponseEntity.ok().body(signUpResponseDTO);
   }
 
+  /**
+   * 로그인
+   * @param dto 이메일, 패스워드
+   * @return
+   */
   @PostMapping("/sign-in")
   public ResponseEntity<LoginResponseDTO> signIn(@Validated @RequestBody LoginRequestDTO dto) {
     LoginResponseDTO responseDTO = userService.authenticate(dto);

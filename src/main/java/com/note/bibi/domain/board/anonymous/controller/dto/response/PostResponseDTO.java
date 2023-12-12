@@ -1,6 +1,6 @@
-package com.note.bibi.domain.board.controller.dto.response;
+package com.note.bibi.domain.board.anonymous.controller.dto.response;
 
-import com.note.bibi.domain.board.model.Post;
+import com.note.bibi.domain.board.anonymous.model.Post;
 import lombok.*;
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.note.bibi.domain.board.controller.dto.request;
+package com.note.bibi.domain.board.anonymous.controller.dto.request;
 
 import lombok.*;
 

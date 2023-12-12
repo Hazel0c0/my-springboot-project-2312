@@ -1,6 +1,6 @@
-package com.note.bibi.domain.board.repository;
+package com.note.bibi.domain.board.anonymous.repository;
 
-import com.note.bibi.domain.board.model.Post;
+import com.note.bibi.domain.board.anonymous.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,9 +1,9 @@
-package com.note.bibi.domain.board.controller;
+package com.note.bibi.domain.board.anonymous.controller;
 
-import com.note.bibi.domain.board.controller.dto.request.PostRequestDTO;
-import com.note.bibi.domain.board.controller.dto.response.PostResponseDTO;
-import com.note.bibi.domain.board.controller.dto.request.SearchDTO;
-import com.note.bibi.domain.board.service.BoardService;
+import com.note.bibi.domain.board.anonymous.controller.dto.request.PostRequestDTO;
+import com.note.bibi.domain.board.anonymous.controller.dto.request.SearchDTO;
+import com.note.bibi.domain.board.anonymous.controller.dto.response.PostResponseDTO;
+import com.note.bibi.domain.board.anonymous.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

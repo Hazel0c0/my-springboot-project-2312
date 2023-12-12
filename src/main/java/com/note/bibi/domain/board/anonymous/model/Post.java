@@ -1,4 +1,4 @@
-package com.note.bibi.domain.board.model;
+package com.note.bibi.domain.board.anonymous.model;
 
 import com.note.bibi.global.common.BaseEntity;
 import lombok.*;
